@@ -32,3 +32,16 @@ console.log( getAWSProfiles() );
 ## Authors
 
 * **mim Armand** - *Armand.eu* - [LinkedIn](https://www.linkedin.com/in/3dots/)
+
+
+## Alternatives:
+
+If you'd prefer to not use this/a package you could instead do:
+```javascript
+const SharedIniFile = require('aws-sdk/lib/shared_ini');
+const sharedIniFile = new SharedIniFile();
+console.log( sharedIniFile.getProfiles() );
+
+```
+This should work with the current version of the SDK and that's essentially how it's done in the package as well.
+I personally prefer to have this done using a separate package/module ( hence the reason I created it ).
