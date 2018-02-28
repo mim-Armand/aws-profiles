@@ -1,4 +1,4 @@
-# AWS-Profiles
+# Get-AWS-Profiles
 
 > Returns the list of AWS profiles available on the local machine using AWS-SDK native private methods.
 
@@ -14,13 +14,13 @@ This Module and its main dependency ( AWS-SDK ) rely on node APIs and will not w
 ### Installing
 
 ```bash
-npm install --save aws-profiles
+npm install --save get-aws-profiles
 ```
 
 ### Usage
 
 ```javascript
-const getAwsProfiles = require('getAwsProfiles');
+const getAwsProfiles = require('get-aws-profiles');
 console.log( getAWSProfiles() );
 ```
 

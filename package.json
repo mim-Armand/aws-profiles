@@ -1,5 +1,5 @@
 {
-  "name": "aws-profiles",
+  "name": "get-aws-profiles",
   "version": "1.0.0",
   "description": "Returns the list of AWS profiles available on the local machine using AWS-SDK native private methods",
   "main": "index.js",
