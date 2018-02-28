@@ -20,8 +20,8 @@ npm install --save get-aws-profiles
 ### Usage
 
 ```javascript
-const getAwsProfiles = require('get-aws-profiles');
-console.log( getAWSProfiles() );
+const awsProfiles = require('get-aws-profiles');
+console.log( awsProfiles.get() );
 ```
 
 ## Built With
@@ -40,7 +40,8 @@ If you'd prefer to not use this/a package you could instead do:
 ```javascript
 const SharedIniFile = require('aws-sdk/lib/shared_ini');
 const sharedIniFile = new SharedIniFile();
-console.log( sharedIniFile.getProfiles() );
+const awsProfiles   = sharedIniFile.getProfiles();
+console.log( awsProfiles );
 
 ```
 This should work with the current version of the SDK and that's essentially how it's done in the package as well.
