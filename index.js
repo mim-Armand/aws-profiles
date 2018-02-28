@@ -8,5 +8,5 @@ exports.get = function get(){
 	finally{ return results; }
 }
 exports.use = function use(profile_name){
-	return new AWS.SharedIniFileCredentials({profile: profile_name});
+	return new AWS.SharedIniFileCredentials({profile: profile_name });
 }
