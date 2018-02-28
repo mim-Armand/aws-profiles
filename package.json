@@ -1,0 +1,29 @@
+{
+  "name": "aws-profiles",
+  "version": "1.0.0",
+  "description": "Returns the list of AWS profiles available on the local machine using AWS-SDK native private methods",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mim-Armand/aws-profiles.git"
+  },
+  "keywords": [
+    "AWS",
+    "AWS-Profiles",
+    "AWS-Credentials",
+    "Credentials",
+    "AWS-SDK"
+  ],
+  "author": "mim Armand (https://www.linkedin.com/in/3dots/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mim-Armand/aws-profiles/issues"
+  },
+  "homepage": "https://www.linkedin.com/in/3dots/",
+  "dependencies": {
+    "aws-sdk": "^2.203.0"
+  }
+}
