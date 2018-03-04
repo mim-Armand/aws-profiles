@@ -10,3 +10,9 @@ exports.get = function get(){
 exports.use = function use(profile_name){
 	return new AWS.SharedIniFileCredentials({profile: profile_name });
 }
+exports.getDefaultFilepath = function(profile_name){
+    return new SharedIniFile().getDefaultFilepath({profile: profile_name });
+}
+exports.getProfile = function(profile_name){
+    return new SharedIniFile().getProfile( profile_name );
+}
