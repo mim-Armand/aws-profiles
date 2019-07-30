@@ -1,10 +1,9 @@
 {
   "name": "get-aws-profiles",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Returns the list of AWS profiles available on the local machine using AWS-SDK native private methods",
   "main": "index.js",
   "scripts": {
-    "postinstall": "echo ============= Thank you for installing get-aws-profiles! =============",
     "test": "mocha $(find test -name '*.js')"
   },
   "repository": {
@@ -25,7 +24,7 @@
   },
   "homepage": "https://www.linkedin.com/in/3dots/",
   "dependencies": {
-    "aws-sdk": "^2.205.0"
+    "aws-sdk": "^2.503.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

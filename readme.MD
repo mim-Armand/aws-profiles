@@ -14,7 +14,7 @@ This Module and its main dependency ( AWS-SDK ) rely on node APIs and will not w
 ### Installing
 
 ```bash
-npm install --save get-aws-profiles
+npm i --save get-aws-profiles
 ```
 
 ### Usage
@@ -24,29 +24,52 @@ const awsProfiles = require('get-aws-profiles');
 ```
 
 #### get( ):
+returns the whole credentials object;
 ```javascript
 console.log( awsProfiles.get() );
+/* output format:
+{
+    default: {aws_access_key_id: 'aws_access_key_id', aws_secret_access_key: 'aws_secret_access_key'},
+    work: {aws_access_key_id: 'aws_access_key_id', aws_secret_access_key: 'aws_secret_access_key'},
+    mim: {aws_access_key_id: 'aws_access_key_id', aws_secret_access_key: 'aws_secret_access_key'},
+    ...
+}
+ */
 ```
-
-> Please note that ( in contrary to the SDK itself ) we are not throwing an exception ( and exiting the process ) if the `credentials` file was not found! instead we return an empty array.
 
 #### use( ):
 Then you can use the `use` method to get a `credentials` object that you can pass to the `AWS.config`. You just need to pass the name of one of the profiles you get from the `get` method:
 ```javascript
 AWS.config.credentials = awsProfiles.use('profile_name');
+/* output format:
+ {
+  expired: false,
+  expireTime: null,
+  refreshCallbacks: [],
+  accessKeyId: 'xxx',
+  sessionToken: undefined,
+  filename: undefined,
+  profile: 'default',
+  disableAssumeRole: false,
+  preferStaticCredentials: false,
+  tokenCodeFn: null,
+  httpOptions: null }
+ */
 ```
 
 #### getDefaultFilepath( ):
 returns the path to the credentials file in the current system/os:
 ```javascript
 console.log(awsProfiles.getDefaultFilepath());
+// output format: "/Users/mimarmand/.aws/credentials"
 ```
 
 
 #### getProfile( ):
 returns the credentials of the passed profile name:
 ```javascript
-console.log(awsProfiles.getProfile());
+console.log(awsProfiles.getProfile()); // defaults to default!
+// output format: { aws_access_key_id: 'xxxx', aws_secret_access_key: 'xxxx' }
 ```
 
 ## Built With

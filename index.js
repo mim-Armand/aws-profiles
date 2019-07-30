@@ -1,18 +1,32 @@
 /* jshint node: true */
 /*jshint esversion: 6 */
 const AWS = require('aws-sdk');
-const SharedIniFile = require('aws-sdk/lib/shared_ini');
-exports.get = function get(){
-	var results  = [];
-	try{ results = new SharedIniFile().getProfiles(); }
-	finally{ return results; }
+const path = require('path');
+const SharedIniFile = require('aws-sdk/lib/shared-ini').iniLoader;
+SharedIniFile.clearCachedFiles()
+
+const getHomeDir = () => {
+	var env = process.env;
+	var home = env.HOME ||
+		env.USERPROFILE ||
+		(env.HOMEPATH ? ((env.HOMEDRIVE || 'C:/') + env.HOMEPATH) : null);
+
+	if (home) return home;
+
+	if (typeof os.homedir === 'function') return os.homedir();
+
+	throw AWS.util.error(new Error('Cannot load credentials, HOME path not set'));
 }
-exports.use = function use(profile_name){
-	return new AWS.SharedIniFileCredentials({profile: profile_name });
-}
-exports.getDefaultFilepath = function(profile_name){
-    return new SharedIniFile().getDefaultFilepath({profile: profile_name });
-}
-exports.getProfile = function(profile_name){
-    return new SharedIniFile().getProfile( profile_name );
-}
+
+const get = () => SharedIniFile.loadFrom();
+const use = (profile_name) => new AWS.SharedIniFileCredentials({profile: profile_name });
+const getDefaultFilepath = () => path.join(getHomeDir(), '.aws', 'credentials');
+const getProfile = (profile_name = 'default') => SharedIniFile.loadFrom()[profile_name];
+
+module.exports = {
+	get,
+	use,
+	getProfile,
+	getHomeDir,
+	getDefaultFilepath
+};
